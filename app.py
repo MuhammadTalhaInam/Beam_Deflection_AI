@@ -200,30 +200,43 @@ if analyze:
                 f"{results['factor_of_safety']:.2f}"
             )
 
-        # ====================================================
-        # ADDITIONAL INFORMATION
+              # ====================================================
+        # BEAM INFORMATION
         # ====================================================
 
-        st.subheader("Beam Information")
+        st.subheader("📐 Beam Information")
 
-        info_col1, info_col2 = st.columns(2)
+        info_col1, info_col2, info_col3 = st.columns(3)
 
         with info_col1:
-
-            st.write(f"**Material:** {material_name}")
-            st.write(f"**Load Type:** {load_type}")
-            st.write(f"**Beam Length:** {L:.3f} m")
-
+            st.write(f"**Material**")
+            st.write(material_name)
 
         with info_col2:
+            st.write(f"**Load Type**")
+            st.write(load_type)
 
-            st.write(f"**Width:** {width:.3f} m")
-            st.write(f"**Height:** {height:.3f} m")
+        with info_col3:
+            st.write(f"**Beam Length**")
+            st.write(f"{L:.3f} m")
 
+        info_col1, info_col2, info_col3 = st.columns(3)
+
+        with info_col1:
+            st.write(f"**Width**")
+            st.write(f"{width:.3f} m")
+
+        with info_col2:
+            st.write(f"**Height**")
+            st.write(f"{height:.3f} m")
+
+        with info_col3:
             if load_type == "Center Point Load":
-                st.write(f"**Point Load:** {load:.2f} N")
+                st.write("**Point Load**")
+                st.write(f"{load:.2f} N")
             else:
-                st.write(f"**UDL:** {load:.2f} N/m")
+                st.write("**UDL**")
+                st.write(f"{load:.2f} N/m")
 
 
         # ====================================================
