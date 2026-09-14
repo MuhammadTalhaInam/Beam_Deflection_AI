@@ -41,30 +41,21 @@ st.info(
 )
 
 
-# ============================================================
-# SIDEBAR — INPUTS
-# ============================================================
+# ====================================================
+# SIDEBAR INPUTS
+# ====================================================
 
-st.sidebar.header("Beam Inputs")
+st.sidebar.header("⚙️ Beam Inputs")
 
-material_name = st.sidebar.selectbox(
-    "Material",
-    list(workflow.MATERIALS.keys())
-)
+# ====================================================
+# BEAM GEOMETRY
+# ====================================================
 
-load_type = st.sidebar.selectbox(
-    "Load Type",
-    [
-        "Center Point Load",
-        "Full-Span UDL"
-    ]
-)
-
-st.sidebar.subheader("Beam Dimensions")
+st.sidebar.subheader("📐 Beam Geometry")
 
 L = st.sidebar.number_input(
     "Beam Length (m)",
-    min_value=0.01,
+    min_value=0.1,
     value=2.0,
     step=0.1
 )
@@ -73,28 +64,50 @@ width = st.sidebar.number_input(
     "Beam Width (m)",
     min_value=0.001,
     value=0.05,
-    step=0.01
+    step=0.005
 )
 
 height = st.sidebar.number_input(
     "Beam Height (m)",
     min_value=0.001,
     value=0.10,
-    step=0.01
+    step=0.005
 )
 
+# ====================================================
+# MATERIAL
+# ====================================================
 
-# ============================================================
-# LOAD INPUT
-# ============================================================
+st.sidebar.subheader("🔩 Material")
 
-st.sidebar.subheader("Loading")
+material_name = st.sidebar.selectbox(
+    "Select Material",
+    [
+        "Structural Steel",
+        "Aluminum 6061-T6",
+        "Stainless Steel 304"
+    ]
+)
+
+# ====================================================
+# LOADING
+# ====================================================
+
+st.sidebar.subheader("⚖️ Loading")
+
+load_type = st.sidebar.selectbox(
+    "Select Load Type",
+    [
+        "Center Point Load",
+        "Full-Span UDL"
+    ]
+)
 
 if load_type == "Center Point Load":
 
     load = st.sidebar.number_input(
         "Point Load (N)",
-        min_value=0.01,
+        min_value=1.0,
         value=1000.0,
         step=100.0
     )
@@ -102,20 +115,21 @@ if load_type == "Center Point Load":
 else:
 
     load = st.sidebar.number_input(
-        "UDL (N/m)",
-        min_value=0.01,
+        "Uniform Load (N/m)",
+        min_value=1.0,
         value=1000.0,
         step=100.0
     )
 
-
-# ============================================================
+# ====================================================
 # ANALYZE BUTTON
-# ============================================================
+# ====================================================
+
+st.sidebar.divider()
 
 analyze = st.sidebar.button(
     "🔍 Analyze Beam",
-    type="primary"
+    use_container_width=True
 )
 
 
