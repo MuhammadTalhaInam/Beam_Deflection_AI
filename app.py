@@ -239,34 +239,29 @@ if analyze:
                 st.write(f"{load:.2f} N/m")
 
 
-        # ====================================================
+              # ====================================================
         # DIAGRAMS
         # ====================================================
 
         st.header("📈 Beam Diagrams")
 
-
         x = results["x"]
-
         shear_force = results["shear_force"]
-
         bending_moment = results["bending_moment"]
-
         deflection = results["deflection"]
 
-
-        # ----------------------------------------------------
-        # SFD
-        # ----------------------------------------------------
+        # ====================================================
+        # SHEAR FORCE DIAGRAM
+        # ====================================================
 
         st.subheader("Shear Force Diagram (SFD)")
 
-        fig_sfd, ax_sfd = plt.subplots()
+        fig_sfd, ax_sfd = plt.subplots(figsize=(9, 4))
 
         ax_sfd.plot(
             x,
             shear_force,
-            linewidth=2
+            linewidth=2.5
         )
 
         ax_sfd.axhline(
@@ -275,30 +270,29 @@ if analyze:
         )
 
         ax_sfd.set_xlabel("Beam Position (m)")
-
         ax_sfd.set_ylabel("Shear Force (N)")
+        ax_sfd.set_title("Shear Force Diagram (SFD)")
+        ax_sfd.set_xlim(0, L)
+        ax_sfd.grid(True, alpha=0.3)
 
-        ax_sfd.set_title("Shear Force Diagram")
-
-        ax_sfd.grid(True)
+        fig_sfd.tight_layout()
 
         st.pyplot(fig_sfd)
 
         plt.close(fig_sfd)
 
-
-        # ----------------------------------------------------
-        # BMD
-        # ----------------------------------------------------
+        # ====================================================
+        # BENDING MOMENT DIAGRAM
+        # ====================================================
 
         st.subheader("Bending Moment Diagram (BMD)")
 
-        fig_bmd, ax_bmd = plt.subplots()
+        fig_bmd, ax_bmd = plt.subplots(figsize=(9, 4))
 
         ax_bmd.plot(
             x,
             bending_moment,
-            linewidth=2
+            linewidth=2.5
         )
 
         ax_bmd.axhline(
@@ -307,30 +301,29 @@ if analyze:
         )
 
         ax_bmd.set_xlabel("Beam Position (m)")
-
         ax_bmd.set_ylabel("Bending Moment (N·m)")
+        ax_bmd.set_title("Bending Moment Diagram (BMD)")
+        ax_bmd.set_xlim(0, L)
+        ax_bmd.grid(True, alpha=0.3)
 
-        ax_bmd.set_title("Bending Moment Diagram")
-
-        ax_bmd.grid(True)
+        fig_bmd.tight_layout()
 
         st.pyplot(fig_bmd)
 
         plt.close(fig_bmd)
 
+        # ====================================================
+        # DEFLECTION CURVE
+        # ====================================================
 
-        # ----------------------------------------------------
-        # DEFLECTION
-        # ----------------------------------------------------
+        st.subheader("Beam Deflection Curve")
 
-        st.subheader("Deflection Curve")
-
-        fig_def, ax_def = plt.subplots()
+        fig_def, ax_def = plt.subplots(figsize=(9, 4))
 
         ax_def.plot(
             x,
             deflection * 1000,
-            linewidth=2
+            linewidth=2.5
         )
 
         ax_def.axhline(
@@ -339,12 +332,12 @@ if analyze:
         )
 
         ax_def.set_xlabel("Beam Position (m)")
-
         ax_def.set_ylabel("Deflection (mm)")
-
         ax_def.set_title("Beam Deflection Curve")
+        ax_def.set_xlim(0, L)
+        ax_def.grid(True, alpha=0.3)
 
-        ax_def.grid(True)
+        fig_def.tight_layout()
 
         st.pyplot(fig_def)
 
