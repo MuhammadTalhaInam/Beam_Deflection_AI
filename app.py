@@ -26,14 +26,18 @@ st.set_page_config(
 
 st.title("🏗️ Interactive Beam Deflection & Stress Calculator")
 
-st.write(
-    "Analyze a simply supported rectangular beam under a center "
-    "point load or a full-span uniformly distributed load (UDL)."
+st.markdown(
+    """
+    Analyze the behavior of a simply supported rectangular beam
+    under different loading conditions.
+
+    **Calculate:** Bending Moment • Bending Stress • Deflection • Factor of Safety
+    """
 )
 
 st.info(
-    "The engineering calculations are performed by Python. "
-    "Groq AI is used only to explain the calculated results."
+    "🔧 Python performs the engineering calculations. "
+    "🤖 Groq AI provides an educational explanation of the calculated results."
 )
 
 
