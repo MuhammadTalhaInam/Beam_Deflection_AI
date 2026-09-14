@@ -148,59 +148,57 @@ if analyze:
         st.success("Beam analysis completed successfully!")
 
 
-        # ====================================================
+              # ====================================================
         # RESULTS
         # ====================================================
 
-       st.header("📊 Engineering Results")
+        st.header("📊 Engineering Results")
 
-# ====================================================
-# STRUCTURAL RESULTS
-# ====================================================
+        # ====================================================
+        # STRUCTURAL RESULTS
+        # ====================================================
 
-st.subheader("⚙️ Structural Results")
+        st.subheader("⚙️ Structural Results")
 
-col1, col2, col3 = st.columns(3)
+        col1, col2, col3 = st.columns(3)
 
-with col1:
-    st.metric(
-        "Maximum Moment",
-        f"{results['maximum_moment']:.2f} N·m"
-    )
+        with col1:
+            st.metric(
+                "Maximum Moment",
+                f"{results['maximum_moment']:.2f} N·m"
+            )
 
-with col2:
-    st.metric(
-        "Maximum Stress",
-        f"{results['maximum_stress'] / 1e6:.2f} MPa"
-    )
+        with col2:
+            st.metric(
+                "Maximum Stress",
+                f"{results['maximum_stress'] / 1e6:.2f} MPa"
+            )
 
-with col3:
-    st.metric(
-        "Maximum Deflection",
-        f"{results['maximum_deflection'] * 1000:.4f} mm"
-    )
+        with col3:
+            st.metric(
+                "Maximum Deflection",
+                f"{results['maximum_deflection'] * 1000:.4f} mm"
+            )
 
+        # ====================================================
+        # SAFETY RESULTS
+        # ====================================================
 
-# ====================================================
-# SAFETY RESULTS
-# ====================================================
+        st.subheader("🛡️ Safety")
 
-st.subheader("🛡️ Safety")
+        col1, col2 = st.columns(2)
 
-col1, col2 = st.columns(2)
+        with col1:
+            st.metric(
+                "Yield Strength",
+                f"{results['yield_strength'] / 1e6:.2f} MPa"
+            )
 
-with col1:
-    st.metric(
-        "Yield Strength",
-        f"{results['yield_strength'] / 1e6:.2f} MPa"
-    )
-
-with col2:
-    st.metric(
-        "Factor of Safety",
-        f"{results['factor_of_safety']:.2f}"
-    )
-
+        with col2:
+            st.metric(
+                "Factor of Safety",
+                f"{results['factor_of_safety']:.2f}"
+            )
 
         # ====================================================
         # ADDITIONAL INFORMATION
