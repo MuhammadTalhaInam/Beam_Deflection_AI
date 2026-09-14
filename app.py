@@ -357,91 +357,90 @@ if analyze:
 
         plt.close(fig_def)
 
-# ====================================================
-# ENGINEERING ASSUMPTIONS
-# ====================================================
+        # ====================================================
+        # ENGINEERING ASSUMPTIONS
+        # ====================================================
 
-st.header("📚 Engineering Assumptions & Theory")
+        st.header("📚 Engineering Assumptions & Theory")
 
-with st.expander("View calculation assumptions and formulas"):
+        with st.expander("View calculation assumptions and formulas"):
 
-    st.markdown("""
-    ### Beam Model
+            st.markdown("""
+### Beam Model
 
-    The calculator analyzes a **simply supported rectangular beam**
-    subjected to either a center point load or a full-span uniformly
-    distributed load (UDL).
+The calculator analyzes a **simply supported rectangular beam**
+subjected to either a center point load or a full-span uniformly
+distributed load (UDL).
 
-    ### Main Assumptions
+### Main Assumptions
 
-    - The beam material is homogeneous and isotropic.
-    - The beam follows linear elastic behavior.
-    - Beam deflection is small compared with the beam length.
-    - Euler-Bernoulli beam theory is used for deflection.
-    - Shear deformation is neglected.
-    - Supports are idealized as simple supports.
-    - The beam cross-section remains rectangular.
-    - Loads are applied vertically.
-    - Self-weight of the beam is not included.
+- The beam material is homogeneous and isotropic.
+- The beam follows linear elastic behavior.
+- Beam deflection is small compared with the beam length.
+- Euler-Bernoulli beam theory is used for deflection.
+- Shear deformation is neglected.
+- Supports are idealized as simple supports.
+- The beam cross-section remains rectangular.
+- Loads are applied vertically.
+- Self-weight of the beam is not included.
 
-    ### Section Properties
+### Section Properties
 
-    For a rectangular cross-section:
+For a rectangular cross-section:
 
-    **Area:**
+**Area:**
 
-    A = b × h
+A = b × h
 
-    **Second Moment of Area:**
+**Second Moment of Area:**
 
-    I = b × h³ / 12
+I = b × h³ / 12
 
-    **Distance from Neutral Axis:**
+**Distance from Neutral Axis:**
 
-    c = h / 2
+c = h / 2
 
-    ### Center Point Load
+### Center Point Load
 
-    For a center point load **P**:
+For a center point load **P**:
 
-    **Maximum Bending Moment:**
+**Maximum Bending Moment:**
 
-    Mmax = P × L / 4
+Mmax = P × L / 4
 
-    **Maximum Deflection:**
+**Maximum Deflection:**
 
-    δmax = P × L³ / (48 × E × I)
+δmax = P × L³ / (48 × E × I)
 
-    ### Full-Span UDL
+### Full-Span UDL
 
-    For a uniformly distributed load **w**:
+For a uniformly distributed load **w**:
 
-    **Maximum Bending Moment:**
+**Maximum Bending Moment:**
 
-    Mmax = w × L² / 8
+Mmax = w × L² / 8
 
-    **Maximum Deflection:**
+**Maximum Deflection:**
 
-    δmax = 5 × w × L⁴ / (384 × E × I)
+δmax = 5 × w × L⁴ / (384 × E × I)
 
-    ### Bending Stress
+### Bending Stress
 
-    The maximum bending stress is calculated using:
+The maximum bending stress is calculated using:
 
-    σmax = Mmax × c / I
+σmax = Mmax × c / I
 
-    ### Factor of Safety
+### Factor of Safety
 
-    The factor of safety is calculated as:
+The factor of safety is calculated as:
 
-    FOS = Yield Strength / Maximum Bending Stress
+FOS = Yield Strength / Maximum Bending Stress
 
-    **Note:** These equations represent an idealized beam model.
-    Real structures may also be affected by connections, stress
-    concentrations, material imperfections, buckling, fatigue,
-    shear deformation, and other loading conditions.
-    """)
-
+**Note:** These equations represent an idealized beam model.
+Real structures may also be affected by connections, stress
+concentrations, material imperfections, buckling, fatigue,
+shear deformation, and other loading conditions.
+""")
         # ====================================================
         # AI EXPLANATION
         # ====================================================
