@@ -358,38 +358,36 @@ if analyze:
         plt.close(fig_def)
 
      
-                 # ====================================================
+                        # ====================================================
         # AI EXPLANATION
         # ====================================================
 
         st.header("🤖 AI Engineering Explanation")
 
-        try:
+        engineering_prompt = prompts.build_engineering_prompt(results)
 
-            engineering_prompt = prompts.build_engineering_prompt(results)
+        response = client.chat.completions.create(
+            model="openai/gpt-oss-120b",
+            messages=[
+                {
+                    "role": "system",
+                    "content": prompts.SYSTEM_PROMPT
+                },
+                {
+                    "role": "user",
+                    "content": engineering_prompt
+                }
+            ],
+            temperature=0.2
+        )
 
-            response = client.chat.completions.create(
-                model="openai/gpt-oss-120b",
-                messages=[
-                    {
-                        "role": "system",
-                        "content": prompts.SYSTEM_PROMPT
-                    },
-                    {
-                        "role": "user",
-                        "content": engineering_prompt
-                    }
-                ],
-                temperature=0.2
-            )
+        ai_explanation = response.choices[0].message.content
 
-            ai_explanation = response.choices[0].message.content
+        st.markdown(ai_explanation)
 
-            st.markdown(ai_explanation)
+    except Exception as e:
 
-        except Exception as e:
-
-            st.error(f"Groq AI error: {e}")
+        st.error(f"Analysis error: {e}")
 
 
 # ============================================================
