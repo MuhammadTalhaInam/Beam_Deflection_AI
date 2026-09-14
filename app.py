@@ -152,38 +152,54 @@ if analyze:
         # RESULTS
         # ====================================================
 
-        st.header("📊 Engineering Results")
+       st.header("📊 Engineering Results")
+
+# ====================================================
+# STRUCTURAL RESULTS
+# ====================================================
+
+st.subheader("⚙️ Structural Results")
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.metric(
+        "Maximum Moment",
+        f"{results['maximum_moment']:.2f} N·m"
+    )
+
+with col2:
+    st.metric(
+        "Maximum Stress",
+        f"{results['maximum_stress'] / 1e6:.2f} MPa"
+    )
+
+with col3:
+    st.metric(
+        "Maximum Deflection",
+        f"{results['maximum_deflection'] * 1000:.4f} mm"
+    )
 
 
-        col1, col2, col3, col4 = st.columns(4)
+# ====================================================
+# SAFETY RESULTS
+# ====================================================
 
+st.subheader("🛡️ Safety")
 
-        with col1:
-            st.metric(
-                "Maximum Moment",
-                f"{results['maximum_moment']:.2f} N·m"
-            )
+col1, col2 = st.columns(2)
 
+with col1:
+    st.metric(
+        "Yield Strength",
+        f"{results['yield_strength'] / 1e6:.2f} MPa"
+    )
 
-        with col2:
-            st.metric(
-                "Maximum Stress",
-                f"{results['maximum_stress'] / 1e6:.2f} MPa"
-            )
-
-
-        with col3:
-            st.metric(
-                "Maximum Deflection",
-                f"{results['maximum_deflection'] * 1000:.4f} mm"
-            )
-
-
-        with col4:
-            st.metric(
-                "Factor of Safety",
-                f"{results['factor_of_safety']:.2f}"
-            )
+with col2:
+    st.metric(
+        "Factor of Safety",
+        f"{results['factor_of_safety']:.2f}"
+    )
 
 
         # ====================================================
