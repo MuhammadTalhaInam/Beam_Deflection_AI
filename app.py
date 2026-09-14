@@ -7,7 +7,13 @@ from groq import Groq
 
 import workflow
 import prompts
+# ====================================================
+# GROQ AI CLIENT
+# ====================================================
 
+groq_api_key = os.environ.get("GROQ_API_KEY")
+
+client = Groq(api_key=groq_api_key)
 
 # ============================================================
 # PAGE CONFIGURATION
